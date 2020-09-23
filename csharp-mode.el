@@ -151,6 +151,7 @@
 			           (topmost-intro         . 0)
                                    (topmost-intro-cont    . 0)
                                    (brace-list-close      . -)
+                                   (inexpr-class          . 0)
                                    (substatement-open     . 0)))))
 
 (defcustom csharp-font-lock-extra-types
