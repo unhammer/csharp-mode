@@ -123,7 +123,7 @@
   csharp '("this" "base" "operator"))
 
 (c-lang-defconst c-inexpr-class-kwds
-  csharp '("new"))
+  csharp nil)
 
 (c-lang-defconst c-std-abbrev-keywords
   csharp (append (c-lang-const c-std-abbrev-keywords) '("catch" "finally")))
@@ -152,7 +152,6 @@
                                    (topmost-intro-cont    . 0)
                                    (arglist-intro         . +)
                                    (arglist-close         . 0)
-                                   (brace-list-close      . -)
                                    (inexpr-class          . 0)
                                    (case-label            . +)
                                    (cpp-macro             . 0)
