@@ -149,6 +149,8 @@
                (c-offsets-alist . ((inline-open . 0)
 			           (topmost-intro         . 0)
                                    (topmost-intro-cont    . 0)
+                                   (arglist-intro         . +)
+                                   (arglist-close         . 0)
                                    (brace-list-close      . -)
                                    (inexpr-class          . 0)
                                    (case-label            . +)
