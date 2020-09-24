@@ -97,7 +97,8 @@
   csharp '("abstract" "const" "default" "final" "native" "private" "protected"
 	   "public" "partial" "internal" "readonly" "static" "event" "transient"
 	   "volatile" "sealed" "ref" "out" "virtual" "implicit" "explicit"
-	   "fixed" "override" "params" "async" "await" "extern" "unsafe"))
+	   "fixed" "override" "params" "async" "await" "extern" "unsafe"
+           "get" "set"))
 
 (c-lang-defconst c-colon-type-list-kwds
   csharp '("class" "struct" "interface"))
