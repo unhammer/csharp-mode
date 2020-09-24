@@ -81,6 +81,9 @@
   csharp '("+" "-" "*" "/" "%" "&" "|" "^" "<<" ">>" "=="
 	   "!=" ">" "<" ">=" "<="))
 
+(c-lang-defconst c-doc-comment-start-regexp
+  csharp "///")
+
 (c-lang-defconst c-primitive-type-kwds
   csharp '("bool" "byte" "sbyte" "char" "decimal" "double" "float" "int" "uint"
 	   "long" "ulong" "short" "ushort" "void" "object" "string" "var"))
