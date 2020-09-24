@@ -40,13 +40,6 @@
   "Major mode for editing C# code."
   :group 'prog-mode)
 
-(defvar csharp-mode-map
-  (let ((map (c-make-inherited-keymap)))
-    map)
-  "Keymap used in csharp-mode buffers.")
-
-(put 'csharp-mode 'c-mode-prefix "csharp-")
-
 (c-lang-defconst c-make-mode-syntax-table
   csharp `(lambda ()
             (let ((table (make-syntax-table)))
@@ -81,8 +74,8 @@
   csharp '("+" "-" "*" "/" "%" "&" "|" "^" "<<" ">>" "=="
 	   "!=" ">" "<" ">=" "<="))
 
-(c-lang-defconst c-doc-comment-start-regexp
-  csharp "///")
+(c-lang-defconst c-multiline-string-start-char
+  csharp ?@)
 
 (c-lang-defconst c-primitive-type-kwds
   csharp '("bool" "byte" "sbyte" "char" "decimal" "double" "float" "int" "uint"
@@ -146,6 +139,9 @@
 (c-lang-defconst c-recognize-<>-arglists
   csharp t)
 
+(c-lang-defconst c-opt-cpp-prefix
+  csharp "\\s *#\\s *")
+
 (c-add-style "csharp"
              '("java"
                (c-basic-offset . 4)
@@ -155,6 +151,8 @@
                                    (topmost-intro-cont    . 0)
                                    (brace-list-close      . -)
                                    (inexpr-class          . 0)
+                                   (case-label            . +)
+                                   (cpp-macro             . 0)
                                    (substatement-open     . 0)))))
 
 (defcustom csharp-font-lock-extra-types
@@ -183,6 +181,15 @@
   (c-compose-keywords-list csharp-font-lock-keywords))
 
 ;; Support for C#
+
+(defvar csharp-mode-syntax-table
+  (funcall (c-lang-const c-make-mode-syntax-table csharp))
+  "Syntax table used in csharp-mode buffers.")
+
+(defvar csharp-mode-map
+  (let ((map (c-make-inherited-keymap)))
+    map)
+  "Keymap used in csharp-mode buffers.")
 
 (easy-menu-define csharp-menu csharp-mode-map "C# Mode Commands"
   (cons "C#" (c-lang-const c-mode-menu csharp)))
