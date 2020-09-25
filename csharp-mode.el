@@ -176,6 +176,16 @@
 (c-lang-defconst c-opt-cpp-prefix
   csharp "\\s *#\\s *")
 
+(c-lang-defconst c-opt-cpp-macro-define
+  csharp (if (c-lang-const c-opt-cpp-prefix)
+             "define"))
+
+(c-lang-defconst c-cpp-message-directives
+  csharp '("error" "warning"))
+
+(c-lang-defconst c-cpp-expr-directives
+  csharp '("if" "else" "elif"))
+
 (c-lang-defconst c-other-op-syntax-tokens
   csharp  (append '("#")
 	       (c-lang-const c-other-op-syntax-tokens)))
@@ -195,7 +205,7 @@
                                    (arglist-close         . 0)
                                    (inexpr-class          . 0)
                                    (case-label            . +)
-                                   (cpp-macro             . [0])
+                                   (cpp-macro             . 0)
                                    (substatement-open     . 0)))))
 
 (defcustom csharp-font-lock-extra-types
