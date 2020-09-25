@@ -77,28 +77,55 @@
 (c-lang-defconst c-multiline-string-start-char
   csharp ?@)
 
+;;; Keyword lists
+
 (c-lang-defconst c-primitive-type-kwds
   csharp '("bool" "byte" "sbyte" "char" "decimal" "double" "float" "int" "uint"
-	   "long" "ulong" "short" "ushort" "void" "object" "string" "var"))
+	   "long" "ulong" "short" "ushort" "void" "object" "string" "const" "var"))
+
+(c-lang-defconst c-return-kwds
+  csharp '("return"))
+
+(c-lang-defconst c-typedef-kwds
+  csharp nil)
+
+(c-lang-defconst c-typeof-kwds
+  c '("typeof" "is" "as"))
+
+(c-lang-defconst c-type-prefix-kwds
+  csharp '("struct" "enum" "class"))
+
+(c-lang-defconst c-type-modifier-prefix-kwds
+  csharp '("volatile"))
 
 (c-lang-defconst c-type-modifier-kwds
-  csharp '("readonly" "const" "volatile" "new"))
+  csharp (append (c-lang-const c-type-modifier-prefix-kwds)
+                 '("readonly" "new")))
 
 (c-lang-defconst c-brace-list-decl-kwds
-  csharp '("enum" "new"))
+  csharp '("enum" "class"))
+
+(c-lang-defconst c-recognize-post-brace-list-type-p
+  csharp t)
 
 (c-lang-defconst c-other-block-decl-kwds
-  csharp '("namespace"))
+  csharp '("namespace" "=>"))
 
 (c-lang-defconst c-using-kwds
   csharp '("using"))
 
+(c-lang-defconst c-equals-type-clause-kwds
+  csharp '("using"))
+
 (c-lang-defconst c-modifier-kwds
-  csharp '("abstract" "const" "default" "final" "native" "private" "protected"
+  csharp '("abstract" "default" "final" "native" "private" "protected"
 	   "public" "partial" "internal" "readonly" "static" "event" "transient"
 	   "volatile" "sealed" "ref" "out" "virtual" "implicit" "explicit"
 	   "fixed" "override" "params" "async" "await" "extern" "unsafe"
-           "get" "set"))
+           "get" "set" "this"))
+
+(c-lang-defconst c-other-decl-kwds
+  csharp '("using"))
 
 (c-lang-defconst c-colon-type-list-kwds
   csharp '("class" "struct" "interface"))
@@ -114,7 +141,7 @@
 	   "unchecked" "using" "lock"))
 
 (c-lang-defconst c-simple-stmt-kwds
-  csharp '("break" "continue" "goto" "return" "throw"))
+  csharp '("break" "continue" "goto" "throw" "return"))
 
 (c-lang-defconst c-constant-kwds
   csharp  '("true" "false" "null" "value"))
@@ -122,8 +149,14 @@
 (c-lang-defconst c-primary-expr-kwds
   csharp '("this" "base" "operator"))
 
+(c-lang-defconst c-lambda-kwds
+  csharp '("=>"))
+
 (c-lang-defconst c-inexpr-class-kwds
   csharp nil)
+
+(c-lang-defconst c-class-decl-kwds
+  csharp '("class" "struct" "interface"))
 
 (c-lang-defconst c-std-abbrev-keywords
   csharp (append (c-lang-const c-std-abbrev-keywords) '("catch" "finally")))
@@ -141,15 +174,23 @@
   csharp t)
 
 (c-lang-defconst c-opt-cpp-prefix
-  csharp "#")
+  csharp "\\s *#\\s *")
+
+(c-lang-defconst c-other-op-syntax-tokens
+  csharp  (append '("#")
+	       (c-lang-const c-other-op-syntax-tokens)))
+
+(c-lang-defconst c-line-comment-starter
+  csharp "//")
+
+(c-lang-defconst c-doc-comment-start-regexp
+  csharp "///")
 
 (c-add-style "csharp"
              '("java"
                (c-basic-offset . 4)
                (c-comment-only-line-offset . (0 . 0))
                (c-offsets-alist . ((inline-open . 0)
-			           (topmost-intro         . 0)
-                                   (topmost-intro-cont    . 0)
                                    (arglist-intro         . +)
                                    (arglist-close         . 0)
                                    (inexpr-class          . 0)
