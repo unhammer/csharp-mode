@@ -154,7 +154,7 @@
                                    (arglist-close         . 0)
                                    (inexpr-class          . 0)
                                    (case-label            . +)
-                                   (cpp-macro             . 0)
+                                   (cpp-macro             . [0])
                                    (substatement-open     . 0)))))
 
 (defcustom csharp-font-lock-extra-types
