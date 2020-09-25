@@ -109,7 +109,7 @@
   csharp t)
 
 (c-lang-defconst c-other-block-decl-kwds
-  csharp '("namespace" "=>"))
+  csharp '("namespace"))
 
 (c-lang-defconst c-using-kwds
   csharp '("using"))
