@@ -141,7 +141,7 @@
   csharp t)
 
 (c-lang-defconst c-opt-cpp-prefix
-  csharp "\\s *#\\s *")
+  csharp "#")
 
 (c-add-style "csharp"
              '("java"
