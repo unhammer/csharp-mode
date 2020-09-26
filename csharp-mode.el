@@ -74,8 +74,8 @@
   csharp '("+" "-" "*" "/" "%" "&" "|" "^" "<<" ">>" "=="
 	   "!=" ">" "<" ">=" "<="))
 
-(c-lang-defconst c-multiline-string-start-char
-  csharp ?@)
+;; (c-lang-defconst c-multiline-string-start-char
+  ;; csharp ?@)
 
 ;;; Keyword lists
 
